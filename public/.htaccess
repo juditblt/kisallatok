@@ -1,0 +1,12 @@
+#APACHE Rewrite mod meglétének ellenőrzése
+<IfModule mod_rewrite.c>
+    #Rewrite engine bekapcsolása
+    RewriteEngine On
+
+    #Rewrite bejegyzése feltétele (kért url nem létező mappa)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    #Rewrite bejegyzése feltétele (kért url nem létező fájl)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    #Kérés átírányitása az index.php fájlra
+    RewriteRule ^ index.php [L]
+</IfModule>
